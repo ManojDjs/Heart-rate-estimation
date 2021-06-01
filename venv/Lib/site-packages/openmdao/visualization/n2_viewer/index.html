@@ -1,0 +1,265 @@
+<div id="all_pt_n2_content_div" class="non-embedded-n2" data-openmdao-version="{{om_version}}">
+    <div id="ptN2ContentDivId">
+        <!-- Toolbar -->
+        <div id="toolbarLoc">
+            <div class="searchbar-container" id="searchbar-container">
+                <button class="search-button" id="searchButtonId" title="Search">
+                    <i class="fas icon-search"></i>
+                </button>
+                <div id='searchbar-and-label' class='searchbar-hidden'>
+                    <label id='searchCountId' for='awesompleteId'>0 matches</label>
+                    <input type="text" tabindex="-1" size="80" placeholder="Search" id="awesompleteId"
+                        class="searchbar" autocomplete="off"/>
+                </div>
+            </div>
+            <div class="toolbar" id="true-toolbar">
+                <div class="toolbar-group group-1">
+                    <i class="fas icon-home2" id="reset-graph"></i>
+                    <i class="fas icon-backward" id="undo-graph"></i>
+                    <i class="fas icon-forward" id="redo-graph"></i>
+                </div>
+                <div class="toolbar-group group-2">
+                    <div class="expandable">
+                        <i class="fas icon-shrink2" id="collapse-element"></i>
+                        <i class="fas icon-caret-right caret"></i>
+                        <div class="toolbar-group-expandable" id="collapse-expandable">
+                            <i class="fas icon-shrink2" id="collapse-element-2"></i>
+                            <i class="fas icon-enlarge2" id="expand-element"></i>
+                            <i class="fas icon-shrink" id="collapse-all"></i>
+                            <i class="fas icon-enlarge" id="expand-all"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="toolbar-group group-3">
+                    <div class="expandable">
+                        <i class="fas icon-hide-connections" id="hide-connections"></i>
+                        <i class="fas icon-caret-right caret"></i>
+                        <div class="toolbar-group-expandable" id="connections-expandable">
+                            <i class="fas icon-hide-connections" id="hide-connections-2"></i>
+                            <i class="fas icon-bezier-curve" id="show-all-connections"></i>
+                        </div>
+                    </div>
+
+                    <i class="fas icon-key" id="legend-button"></i>
+
+                    <div class="expandable">
+                        <i class="fas icon-linear-solver solver-button" id="linear-solver-button"></i>
+                        <i class="fas icon-caret-right caret"></i>
+                        <div class="toolbar-group-expandable" id="solvers-expandable">
+                            <i class="fas icon-linear-solver solver-button" id="linear-solver-button-2"></i>
+                            <i class="fas icon-nonlinear-solver solver-button" id="non-linear-solver-button"></i>
+                            <i class="fas icon-no-solver solver-button" id="no-solver-button"></i>
+                        </div>
+                    </div>
+
+                    <i class="fas icon-fx-2" id="desvars-button"></i>
+                </div>
+                <div class="toolbar-group group-4">
+                    <div class="expandable">
+                        <i class="fas icon-text-height" id="text-slider-button"></i>
+                        <i class="fas icon-caret-right caret"></i>
+                        <div class="toolbar-group-expandable" id="text-width-expandable">
+                            <input type="range" min="8" max="24" value="11" class="slider" id="text-slider" />
+                            <p id="font-size-indicator">11 px</p>
+                        </div>
+                    </div>
+                    <div class="expandable">
+                        <i class="fas icon-collapse-depth" id="depth-slider-button"></i>
+                        <i class="fas icon-caret-right caret"></i>
+                        <div class="toolbar-group-expandable" id="model-depth-expandable">
+                            <input type="range" min="2" max="10" value="0" class="slider" id="depth-slider" />
+                            <p id='depth-slider-label'>10</p>
+                        </div>
+                    </div>
+                    <div class="expandable">
+                        <i class="fas icon-model-height" id="model-slider-button"></i>
+                        <i class="fas icon-caret-right caret"></i>
+                        <div class="toolbar-group-expandable" id="model-height-expandable">
+                            <input type="range" min='50' max='200' value='95' class="slider" id="model-slider" />
+                            <p id='model-slider-label'>95%</p>
+                            <button id='model-slider-fit'>Fit</button>
+                        </div>
+                    </div>
+                    <div class="expandable">
+                        <i class="fas icon-save" id="save-load-button"></i>
+                        <i class="fas icon-caret-right caret"></i>
+                        <div class="toolbar-group-expandable" id="text-width-expandable">
+                            <i class="fas icon-savesvg" id="save-button"></i>
+                            <i class="fas icon-saveview" id="save-state-button"></i>
+                            <i class="fas icon-loadview" id="load-state-button"></i>
+                            <input id="state-file-input" type="file" name="name" style="display: none;" />
+                        </div>
+                    </div>
+                </div>
+                <div class="toolbar-group group-5">
+                    <i class="fas icon-info-circle" id="info-button"></i>
+                    <i class="fas icon-question-circle" id="question-button"></i>
+                </div>
+            </div>
+            <!-- Hide toolbar button -->
+            <div class="toolbar-hide-container" id="hide-toolbar">
+                <i class="fas icon-chevron-left hide-toolbar-button"></i>
+            </div>
+        </div>
+
+
+
+        <div id="d3_content_div">
+            <!-- 2D Matrix Showing All Inputs/Outputs and Functions -->
+            <div id="svgDiv">
+                <div class="no-show" id="waiting-container">
+                    <img id="waiting-icon" src="data:image/png;base64,{{waiting_icon}}" alt="Processing..." />
+                </div>
+                <svg id="svgId">
+                    <style title='svgStyle'></style>
+                    <defs>
+                        <marker id="arrow" viewBox="0 -5 10 10" refX="5" refY="0" markerWidth="1" markerHeight="1"
+                            orient="auto">
+                            <path d="M0,-5L10,0L0,5L0,-5" class="arrowHead"></path>
+                        </marker>
+                        <clipPath id="partitionTreeClip">
+                            <rect id="tree-clip-rect" x="0" y="0" width="1200" height="600" />
+                        </clipPath>
+                        <clipPath id="n2MatrixClip">
+                            <rect id="matrix-clip-rect" x="-1" y="-1" width="602" height="602" />
+                        </clipPath>
+                        <clipPath id="solverTreeClip">
+                            <rect id="solver-clip-rect" x="0" y="0" width="1200" height="600" />
+                        </clipPath>
+                        <g id='matrix-connector-arrow' width='10' height='10'>
+                            <path d='M0,3 h2 q5,0 5,5 h1 l-3,2 l-3,-2 h1 q0,-1 -1,-1 h-2 z'></path>
+                        </g>
+                        <g id='matrix-connector-square' width='10' height='10'>
+                            <rect x='2' y='2' width='6' height='6'></rect>
+                        </g>
+                    </defs>
+                    <g id='tree' clip-path='url(#partitionTreeClip)'></g>
+                    <g id='highlight-bar'></g>
+                    <g id='solver_tree' clip-path='url(#solverTreeClip)'></g>
+                    <g id='n2outer'>
+                        <g id='n2inner'>
+                            <rect id='backgroundRect' class='background'></rect>
+                            <g id='n2background' clip-path='url(#n2MatrixClip)'></g>
+                            <g id='n2gridlines' clip-path='url(#n2MatrixClip)'></g>
+                            <g id='n2elements' clip-path='url(#n2MatrixClip)'></g>
+                            <g id='n2componentBoxes' clip-path='url(#n2MatrixClip)'></g>
+                            <g id='n2arrows'></g>
+                        </g>
+                        <g id='n2top' class='offgridLabel'></g>
+                        <g id='n2left' class='offgridLabel'></g>
+                        <g id='n2right' class='offgridLabel'></g>
+                        <g id='n2bottom' class='offgridLabel'></g>
+                    </g>
+                    <g id='text-width-renderer' class='partition_group'>
+                        <text x='-200'></text>
+                    </g>
+                </svg>
+                <div id='n2-resizer-box' class='inactive-resizer-box'>
+                    <p id='n2-resizer-handle' class='inactive-resizer-handle'></p>
+                </div>
+            </div>
+
+            <!-- Legend to show all symbols -->
+            <div class="legend" id="legend-div" style="visibility: hidden">
+                <div class="sys-var-container">
+                    <div class="legend-title-container">
+                        <p class="legend-title">Systems &amp;&nbsp;Variables</p>
+                    </div>
+                    <div id="sys-var-legend"></div>
+                </div>
+                <div class="n2-symbols-container">
+                    <div class="legend-title-container">
+                        <p class="legend-title">N2<br />Symbols</p>
+                    </div>
+                    <div id="symbols-legend">
+                        <div class="symbol">
+                            <div class="symbol-outer scalar">
+                                <div class="symbol-inner"></div>
+                            </div>
+                            <p>Scalar</p>
+                        </div>
+                        <div class="symbol">
+                            <div class="symbol-outer vector">
+                                <div class="symbol-inner"></div>
+                            </div>
+                            <p>Vector</p>
+                        </div>
+                        <div class="symbol">
+                            <div class="symbol-outer collapsed">
+                                <div class="symbol-inner"></div>
+                            </div>
+                            <p>Collapsed Variables</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="linear-solvers-container">
+                    <div class="legend-title-container">
+                        <p class="legend-title" id="solvers-legend-title">Linear Solvers</p>
+                    </div>
+                    <div id="solvers-legend"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="connectionId"></div>
+
+        <div id='n2-windows'>
+            <div class='n2-windows-modal-bg window-inactive'></div>
+            <!-- Window template for all N2 windows -->
+            <div id='window-template' class='window-inactive' style='z-index: 100'>
+                <div class='main-window'>
+                    <div class='window-contents window-theme-default'>
+                        <div class='window-header'>
+                            <span class='window-title'>N2 Information</span>
+                        </div>
+                        <!-- Close button outside of header so it doesn't affect title alignment -->
+                        <span class='window-close-button'></span>
+                        <div class='window-body'></div>
+                        <div class='window-footer'>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Need this off window element to put values that can then be put on the pastebuffer -->
+    <textarea id="input-for-pastebuffer"></textarea>
+
+    <div class="tool-tip" style="position: absolute; visibility: hidden;"></div>
+    <div id="top" class="offgrid" style="visibility: hidden;"></div>
+    <div id="left" class="offgrid" style="visibility: hidden;"></div>
+    <div id="right" class="offgrid" style="visibility: hidden;"></div>
+    <div id="bottom" class="offgrid" style="visibility: hidden;"></div>
+
+    <div id="logo-container">
+        <img id="company-logo" alt="OpenMDAO" src="data:image/png;base64,{{logo_png}}" />
+    </div>
+
+    <div id="show-error-button-container">
+        <button id="show-error-button">
+            <i class="fas icon-notification"></i> Show N2 Error
+        </button>
+    </div>
+
+    <div id="toolbar-help-container" class='window-inactive'>
+        <p>Left clicking on a node in the model hierarchy will navigate to that node.<br>
+            Right clicking on a node in the model hierarchy will collapse/expand it.<br>
+            Hovering over any cell in the matrix will display its connections
+            as arrows. Clicking that cell will cause those arrows to persist.
+        </p>
+        <h1>Toolbar Help</h1>
+        <div class='help-graphic'>
+            <img id="toolbar-snapshot" alt="Snapshot of toolbar buttons"
+                src="data:image/png;base64,{{n2toolbar_png}}" />
+            <svg id='help-graphic-svg'></svg>
+        </div>
+    </div>
+
+    {d3_lib} {awesomplete_lib} {vk_beautify_lib} {pako_inflate_lib} {json5_lib}
+    {{model_data}}
+    {utils_lib} {symboltype_lib} {n2treenode_lib} {modeldata_lib} {n2style_lib}
+    {n2window_lib} {n2layout_lib} {n2matrixcell_lib} {n2legend_lib} {n2matrix_lib}
+    {n2arrow_lib} {n2search_lib} {n2toolbar_lib} {n2diagram_lib}
+    {nodeinfo_lib} {n2userinterface_lib} {defaults_lib} {ptn2_lib}
